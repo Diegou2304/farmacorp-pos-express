@@ -4,7 +4,8 @@ namespace FarmacorpPOS.Domain.Express
 {
     public class ProductType
     {
-        public int IdProductType { get; set; }
+        public int ProductTypeId { get; set; }
         public string Description { get; set; } = string.Empty;
+        public ICollection<Product> Products { get; } = new List<Product>();
     }
 }
