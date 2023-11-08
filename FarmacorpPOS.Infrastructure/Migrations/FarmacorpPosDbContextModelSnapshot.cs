@@ -36,14 +36,6 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                     b.HasKey("BarCodeId");
 
                     b.ToTable("BarCodes");
-
-                    b.HasData(
-                        new
-                        {
-                            BarCodeId = 1,
-                            BarCodeUniqueId = new Guid("f18540bd-a2b0-4986-8276-b3009e8d272a"),
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("FarmacorpPOS.Domain.ERP.ErpProduct", b =>
@@ -69,7 +61,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         {
                             ErpProductId = 1,
                             Cost = 5.99m,
-                            RegistrationDate = new DateTime(2023, 11, 7, 18, 14, 58, 674, DateTimeKind.Local).AddTicks(9222),
+                            RegistrationDate = new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9384),
                             Stock = 100
                         });
                 });
@@ -220,7 +212,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         new
                         {
                             ProductId = 1,
-                            ExpirationDate = new DateTime(2023, 11, 7, 18, 14, 58, 674, DateTimeKind.Local).AddTicks(9194),
+                            ExpirationDate = new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9357),
                             Observations = "Secadores absorbe todo",
                             Price = 10.99,
                             ProductName = "Secadores de Mano",
@@ -229,7 +221,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         new
                         {
                             ProductId = 2,
-                            ExpirationDate = new DateTime(2023, 11, 7, 18, 14, 58, 674, DateTimeKind.Local).AddTicks(9205),
+                            ExpirationDate = new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9369),
                             Observations = "Alimento frutal bebible",
                             Price = 1.5,
                             ProductName = "Pilfrut",

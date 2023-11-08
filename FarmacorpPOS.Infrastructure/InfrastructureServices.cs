@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FarmacorpPOS.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,8 +14,9 @@ namespace FarmacorpPOS.Infrastructure
             services.AddDbContext<FarmacorpPosDbContext>(options =>
                 options.UseSqlServer(
                     configuration.GetConnectionString("ConnectionString")
-                )); 
-
+                ));
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBarCodeRepository, BarCodeRepository>();
             return services;
         }
     }

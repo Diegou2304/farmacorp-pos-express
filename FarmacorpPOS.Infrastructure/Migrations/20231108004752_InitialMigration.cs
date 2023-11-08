@@ -183,19 +183,14 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                 columns: new[] { "ProductId", "ExpirationDate", "Observations", "Price", "ProductName", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 7, 18, 14, 58, 674, DateTimeKind.Local).AddTicks(9194), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
-                    { 2, new DateTime(2023, 11, 7, 18, 14, 58, 674, DateTimeKind.Local).AddTicks(9205), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
+                    { 1, new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9357), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
+                    { 2, new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9369), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
                 });
-
-            migrationBuilder.InsertData(
-                table: "BarCodes",
-                columns: new[] { "BarCodeId", "BarCodeUniqueId", "IsActive" },
-                values: new object[] { 1, new Guid("f18540bd-a2b0-4986-8276-b3009e8d272a"), true });
 
             migrationBuilder.InsertData(
                 table: "ErpProducts",
                 columns: new[] { "ErpProductId", "Cost", "RegistrationDate", "Stock" },
-                values: new object[] { 1, 5.99m, new DateTime(2023, 11, 7, 18, 14, 58, 674, DateTimeKind.Local).AddTicks(9222), 100 });
+                values: new object[] { 1, 5.99m, new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9384), 100 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentCategoryId",

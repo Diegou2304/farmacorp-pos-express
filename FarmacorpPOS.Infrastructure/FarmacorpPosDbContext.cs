@@ -4,7 +4,7 @@ using FarmacorpPOS.Domain.ERP;
 using FarmacorpPOS.Domain.Express;
 using FarmacorpPOS.Domain.Express.JoinEntities;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
+
 
 
 namespace FarmacorpPOS.Infrastructure
@@ -31,11 +31,11 @@ namespace FarmacorpPOS.Infrastructure
                     .WithMany(e => e.Products)
                     .UsingEntity<ProductCategory>();
 
-            builder.Entity<Product>()
-                   .HasOne(e => e.BarCode)
-                   .WithOne(e => e.Product)
-                   .HasForeignKey<BarCode>(e => e.BarCodeId)
-                   .IsRequired(false);
+            builder.Entity<BarCode>()
+                .HasOne(e => e.Product)
+                .WithOne(e => e.BarCode)
+                .HasForeignKey<BarCode>(e => e.BarCodeId)
+                .IsRequired(false);
 
             builder.Entity<Product>()
               .HasOne(e => e.ErpProduct)
@@ -53,8 +53,8 @@ namespace FarmacorpPOS.Infrastructure
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<ProductType>().HasData(
-                new ProductType { ProductTypeId = 1, Description = "Productos de Limpieza para el hogar"},
-                new ProductType { ProductTypeId = 2, Description = "Productos Lacteos"}
+                new ProductType { ProductTypeId = 1, Description = "Productos de Limpieza para el hogar" },
+                new ProductType { ProductTypeId = 2, Description = "Productos Lacteos" }
                 );
             builder.Entity<Category>().HasData(
                new Category { CategoryId = 1, Description = "Limpieza", IsActive = true },
@@ -67,10 +67,6 @@ namespace FarmacorpPOS.Infrastructure
             builder.Entity<ErpProduct>().HasData(
                 new ErpProduct { ErpProductId = 1, Cost = 5.99m, RegistrationDate = DateTime.Now, Stock = 100 }
            );
-
-           builder.Entity<BarCode>().HasData(
-                new BarCode { BarCodeId = 1, BarCodeUniqueId = Guid.NewGuid(), IsActive = true }
-            );
 
         }
     
