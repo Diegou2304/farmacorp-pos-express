@@ -27,5 +27,16 @@ namespace FarmacorpPOS.Infrastructure.Repositories
 
             await _dbcontext.SaveChangesAsync();
         }
+
+        public async Task<ProductType?> GetProductTypeById(int id)
+        {
+            return await _dbcontext.productsType!.FindAsync(id);
+        }
+        public async Task AddProductAsync(Product product)
+        {
+            await _dbcontext.products.AddAsync(product);
+            await _dbcontext.SaveChangesAsync();
+        }
+
     }
 }

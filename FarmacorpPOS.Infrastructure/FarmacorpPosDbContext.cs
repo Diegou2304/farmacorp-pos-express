@@ -65,7 +65,7 @@ namespace FarmacorpPOS.Infrastructure
                new Product { ProductId = 2, ProductName = "Pilfrut", Price = 1.50, ExpirationDate = DateTime.Now, Observations = "Alimento frutal bebible", ProductTypeId = 2 }
            );
             builder.Entity<ErpProduct>().HasData(
-                new ErpProduct { ErpProductId = 1, Cost = 5.99m, RegistrationDate = DateTime.Now, Stock = 100 }
+                new ErpProduct { ErpProductId = 1, Cost = 5.99, RegistrationDate = DateTime.Now, UniqueCode = Guid.NewGuid(),  Stock = 100 }
            );
 
         }

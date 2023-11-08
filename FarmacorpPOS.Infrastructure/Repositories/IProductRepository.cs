@@ -8,5 +8,7 @@ namespace FarmacorpPOS.Infrastructure.Repositories
     {
         Task<Product> GetProductById(int id);
         Task UpdateProductAsync(Product product);
+        Task<ProductType?> GetProductTypeById(int id);
+        Task AddProductAsync(Product product);
     }
 }

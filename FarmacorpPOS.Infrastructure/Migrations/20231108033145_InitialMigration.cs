@@ -92,8 +92,9 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                 columns: table => new
                 {
                     ErpProductId = table.Column<int>(type: "int", nullable: false),
-                    Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Cost = table.Column<double>(type: "float", nullable: false),
                     RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UniqueCode = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -139,9 +140,8 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                     ProductCategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IdCategory = table.Column<int>(type: "int", nullable: false)
+                    IdCategory = table.Column<int>(type: "int", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,14 +183,14 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                 columns: new[] { "ProductId", "ExpirationDate", "Observations", "Price", "ProductName", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 7, 21, 1, 59, 403, DateTimeKind.Local).AddTicks(3244), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
-                    { 2, new DateTime(2023, 11, 7, 21, 1, 59, 403, DateTimeKind.Local).AddTicks(3254), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
+                    { 1, new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2300), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
+                    { 2, new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2309), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
                 });
 
             migrationBuilder.InsertData(
                 table: "ErpProducts",
-                columns: new[] { "ErpProductId", "Cost", "RegistrationDate", "Stock" },
-                values: new object[] { 1, 5.99m, new DateTime(2023, 11, 7, 21, 1, 59, 403, DateTimeKind.Local).AddTicks(3267), 100 });
+                columns: new[] { "ErpProductId", "Cost", "RegistrationDate", "Stock", "UniqueCode" },
+                values: new object[] { 1, 5.9900000000000002, new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2319), 100, new Guid("02188133-4972-4406-b03c-a5b7fed4b938") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentCategoryId",

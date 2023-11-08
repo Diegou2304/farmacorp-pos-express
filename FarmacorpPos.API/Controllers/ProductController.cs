@@ -1,4 +1,5 @@
 ﻿using FarmacorpPOS.Application.Features.Products.AssignCategories;
+using FarmacorpPOS.Application.Features.Products.CreateProduct;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,22 @@ namespace FarmacorpPos.API.Controllers
             
         }
 
-        [HttpPost("/products-categories")]
-        public async Task<IActionResult> AssignCategories([FromBody] AssignProductCategoryCommand command )
+        [HttpPost("/products/{productId}/categories")]
+        public async Task<IActionResult> AssignCategories(int productId, [FromBody] AssignProductCategoriesRequest request )
         {
+            var command = new AssignProductCategoryCommand
+            {
+                ProductId = productId,
+                CategoryId = request.CategoryId,
+                CreationDate = request.CreationDate,    
+            };
             return await _mediator.Send(command);
+        }
+
+        [HttpPost("products")]
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
+        {
+            return await _mediator.Send(command);   
         }
     }
 }

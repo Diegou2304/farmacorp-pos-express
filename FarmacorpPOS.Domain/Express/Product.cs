@@ -1,6 +1,7 @@
 ﻿
 using FarmacorpPOS.Domain.ERP;
 using FarmacorpPOS.Domain.Express.JoinEntities;
+using System.Runtime.InteropServices;
 
 namespace FarmacorpPOS.Domain.Express
 {
@@ -20,5 +21,28 @@ namespace FarmacorpPOS.Domain.Express
         public BarCode? BarCode { get; set; }
         public ErpProduct? ErpProduct { get; set; }
 
+        public Product()
+        {
+            
+
+        }
+
+        public static Product CreateProduct(string productName, 
+                                            string observations, 
+                                            int productTypeId, 
+                                            ErpProduct erpProduct,
+                                            DateTime expirationDate)
+        {
+            return new Product
+            {
+                ProductName = productName,
+                Observations = observations,
+                ProductTypeId = productTypeId,
+                ErpProduct = erpProduct,
+                ExpirationDate = expirationDate,
+                Price = erpProduct.Cost * 1.5,
+            };
+
+        }
     }
 }
