@@ -21,7 +21,7 @@ namespace FarmacorpPOS.Application.Features.Products.CreateProduct
             if (productType is null) return new BadRequestObjectResult(new {Message = "El tipo de producto no existe, por favor seleccione otro"});
 
             var newErpProduct = ErpProduct.CreateErpProduct(request.Cost, request.Stock);
-            var newProduct = Product.CreateProduct(request.ProductName, request.Observations, request.ProductTypeId, newErpProduct, request.ExpirationDate);
+            var newProduct = Product.CreateProduct(request.ProductName, request.Observations, request.ProductTypeId, newErpProduct, request.ExpirationDate, 1.5);
 
             await _productRepository.AddProductAsync(newProduct);
 

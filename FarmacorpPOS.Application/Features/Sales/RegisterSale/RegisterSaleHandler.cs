@@ -1,44 +1,46 @@
-﻿using FarmacorpPOS.Domain.Express;
+﻿using FarmacorpPOS.Application.Features.Sales.Utils;
+using FarmacorpPOS.Application.Features.Sales.Utils.Factory;
+using FarmacorpPOS.Application.Features.Sales.Utils.Strategy;
 using FarmacorpPOS.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.Extensions.Options;
 
 namespace FarmacorpPOS.Application.Features.Sales.RegisterSale
 {
     public class RegisterSaleHandler : IRequestHandler<RegisterSaleCommand, IActionResult>
     {
-        private readonly ISaleRepository _saleRepository;
+      
         private readonly IProductRepository _productRepository;
-        public RegisterSaleHandler(ISaleRepository saleRepository, IProductRepository productRepository)
+        private readonly ISaleStrategyFactory _saleStrategyFactory;
+        private readonly string _saleStrategyName;
+        public RegisterSaleHandler(IProductRepository productRepository, ISaleStrategyFactory saleStrategyFactory, IOptions<SaleStrategyConfig> saleStrategyConfig)
         {
-            _saleRepository = saleRepository;
             _productRepository = productRepository;
+            _saleStrategyFactory = saleStrategyFactory;
+            _saleStrategyName = saleStrategyConfig.Value.SaleMode;
         }
         public async Task<IActionResult> Handle(RegisterSaleCommand request, CancellationToken cancellationToken)
         {
             
 
             var product = await _productRepository.GetProductById(request.ProductId);
-            var discount = GetDiscount(product);
+           
 
             if (product is null)
                 return new BadRequestObjectResult(new { Message = "El producto ingresado no existe en la base de datos" });
-            if (request.Quantity > product.ErpProduct!.Stock)
-                return new BadRequestObjectResult(new { Message = "No hay stock suficiente, por favor vuelva a intentar con otra cantidad" });
 
-            var newSale = ExpressSale.CreateSale(request.ClientFullName, product, request.Quantity, discount);
-            product.ErpProduct.DecreaseStock(request.Quantity);
-            await _saleRepository.RegisterSale(newSale);
-            return new OkResult();
+            ISaleStrategy saleStrategy = _saleStrategyFactory.GetInstance(_saleStrategyName);
+
+            return await saleStrategy.RegisterSale(
+                                        request.ClientFullName,
+                                        product, 
+                                        request.Quantity);
+
+            
         }
 
-        private static double GetDiscount(Product product) => product.ProductCategories.Count switch
-        {
-            1 => 0.3,
-            >1 => 0,
-            _ => 0
+       
 
-        };
     }
 }

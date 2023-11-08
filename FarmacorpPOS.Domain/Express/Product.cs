@@ -31,7 +31,8 @@ namespace FarmacorpPOS.Domain.Express
                                             string observations, 
                                             int productTypeId, 
                                             ErpProduct erpProduct,
-                                            DateTime expirationDate)
+                                            DateTime expirationDate,
+                                            double priceMultiplier)
         {
             return new Product
             {
@@ -40,7 +41,7 @@ namespace FarmacorpPOS.Domain.Express
                 ProductTypeId = productTypeId,
                 ErpProduct = erpProduct,
                 ExpirationDate = expirationDate,
-                Price = erpProduct.Cost * 1.5,
+                Price = erpProduct.Cost * priceMultiplier,
             };
 
         }

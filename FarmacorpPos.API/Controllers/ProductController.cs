@@ -20,8 +20,7 @@ namespace FarmacorpPos.API.Controllers
             var command = new AssignProductCategoryCommand
             {
                 ProductId = productId,
-                CategoryId = request.CategoryId,
-                CreationDate = request.CreationDate,    
+                CategoryId = request.CategoryId, 
             };
             return await _mediator.Send(command);
         }
