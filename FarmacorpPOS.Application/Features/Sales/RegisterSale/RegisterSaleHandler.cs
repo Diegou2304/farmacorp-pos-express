@@ -1,7 +1,7 @@
 ﻿using FarmacorpPOS.Application.Features.Sales.Utils;
 using FarmacorpPOS.Application.Features.Sales.Utils.Factory;
 using FarmacorpPOS.Application.Features.Sales.Utils.Strategy;
-using FarmacorpPOS.Infrastructure.Repositories.Contracts;
+using FarmacorpPOS.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -11,22 +11,23 @@ namespace FarmacorpPOS.Application.Features.Sales.RegisterSale
     public class RegisterSaleHandler : IRequestHandler<RegisterSaleCommand, IActionResult>
     {
       
-        private readonly IProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ISaleStrategyFactory _saleStrategyFactory;
         private readonly string _saleStrategyName;
-        public RegisterSaleHandler(IProductRepository productRepository, 
-                                    ISaleStrategyFactory saleStrategyFactory, 
-                                    IOptions<SaleStrategyConfig> saleStrategyConfig)
-                                {
-            _productRepository = productRepository;
-            _saleStrategyFactory = saleStrategyFactory;
+        public RegisterSaleHandler(
+                                    IOptions<SaleStrategyConfig> saleStrategyConfig,
+                                    IUnitOfWork unitOfWork,
+                                    ISaleStrategyFactory saleStrategyFactory)
+        {
             _saleStrategyName = saleStrategyConfig.Value.SaleMode;
+            _unitOfWork = unitOfWork;
+            _saleStrategyFactory = saleStrategyFactory;
         }
         public async Task<IActionResult> Handle(RegisterSaleCommand request, CancellationToken cancellationToken)
         {
             
 
-            var product = await _productRepository.GetProductById(request.ProductId);
+            var product = await _unitOfWork.ProductRepository.GetProductById(request.ProductId);
            
 
             if (product is null)

@@ -1,15 +1,15 @@
 ﻿using FarmacorpPOS.Domain.Express;
-using FarmacorpPOS.Infrastructure.Repositories.Contracts;
+using FarmacorpPOS.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmacorpPOS.Application.Features.Sales.Utils.Strategy
 {
     public class NewSaleStrategy : ISaleStrategy
     {
-        private readonly ISaleRepository _saleRepository;
-        public NewSaleStrategy(ISaleRepository saleRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public NewSaleStrategy(IUnitOfWork unitOfWork)
         {
-            _saleRepository = saleRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IActionResult> RegisterSale(string clientName, Product product, int quantity)
         {
@@ -19,9 +19,12 @@ namespace FarmacorpPOS.Application.Features.Sales.Utils.Strategy
             var discount = GetDiscount(product);
             var newSale = ExpressSale.CreateSale(clientName, product, quantity, discount);
             product.ErpProduct.DecreaseStock(quantity);
-            await _saleRepository.RegisterSale(newSale);
+            await _unitOfWork.SaleRepository.RegisterSale(newSale);
 
-            return new OkObjectResult(new { newSale.ExpressSaleId });
+            var result = await _unitOfWork.Complete();
+            if(result > 0) return new OkObjectResult(new { newSale.ExpressSaleId });
+
+            return new BadRequestResult();
 
         }
         private static double GetDiscount(Product product) => product.ProductCategories.Count switch
