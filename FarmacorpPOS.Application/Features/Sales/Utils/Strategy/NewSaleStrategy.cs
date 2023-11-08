@@ -1,7 +1,7 @@
 ﻿
 using Azure.Core;
 using FarmacorpPOS.Domain.Express;
-using FarmacorpPOS.Infrastructure.Repositories;
+using FarmacorpPOS.Infrastructure.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmacorpPOS.Application.Features.Sales.Utils.Strategy

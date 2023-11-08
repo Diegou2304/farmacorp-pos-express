@@ -1,6 +1,8 @@
 ﻿
 
 using FarmacorpPOS.Domain.Express;
+using FarmacorpPOS.Infrastructure.Persistence;
+using FarmacorpPOS.Infrastructure.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace FarmacorpPOS.Infrastructure.Repositories

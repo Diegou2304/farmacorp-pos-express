@@ -1,7 +1,6 @@
-﻿
-using FarmacorpPOS.Domain.Express;
+﻿using FarmacorpPOS.Domain.Express;
 
-namespace FarmacorpPOS.Infrastructure.Repositories
+namespace FarmacorpPOS.Infrastructure.Repositories.Contracts
 {
     public interface ICategoryRepository
     {

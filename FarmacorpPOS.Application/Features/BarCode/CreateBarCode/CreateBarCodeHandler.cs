@@ -1,8 +1,7 @@
-﻿using FarmacorpPOS.Infrastructure.Repositories;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using FarmacorpPOS.Domain.ERP;
-
+using FarmacorpPOS.Infrastructure.Repositories.Contracts;
 
 namespace FarmacorpPOS.Application.Features.BarCode.CreateBarCode
 {

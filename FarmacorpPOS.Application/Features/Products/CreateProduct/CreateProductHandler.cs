@@ -1,7 +1,7 @@
 ﻿using FarmacorpPOS.Application.Features.Sales.Utils;
 using FarmacorpPOS.Domain.ERP;
 using FarmacorpPOS.Domain.Express;
-using FarmacorpPOS.Infrastructure.Repositories;
+using FarmacorpPOS.Infrastructure.Repositories.Contracts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

@@ -1,4 +1,6 @@
-﻿using FarmacorpPOS.Infrastructure.Repositories;
+﻿using FarmacorpPOS.Infrastructure.Persistence;
+using FarmacorpPOS.Infrastructure.Repositories;
+using FarmacorpPOS.Infrastructure.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

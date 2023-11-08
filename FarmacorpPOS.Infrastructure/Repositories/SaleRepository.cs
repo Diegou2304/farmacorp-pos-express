@@ -1,5 +1,7 @@
 ﻿
 using FarmacorpPOS.Domain.Express;
+using FarmacorpPOS.Infrastructure.Persistence;
+using FarmacorpPOS.Infrastructure.Repositories.Contracts;
 
 namespace FarmacorpPOS.Infrastructure.Repositories
 {
