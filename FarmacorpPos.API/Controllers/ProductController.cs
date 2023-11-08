@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FarmacorpPos.API.Controllers
 {
+    [ApiController]
     public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -28,6 +29,7 @@ namespace FarmacorpPos.API.Controllers
         [HttpPost("products")]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
         {
+           
             return await _mediator.Send(command);   
         }
     }

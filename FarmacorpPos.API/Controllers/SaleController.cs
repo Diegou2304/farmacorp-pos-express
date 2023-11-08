@@ -2,10 +2,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace FarmacorpPos.API.Controllers
 {
     [ApiController]
-    public class SaleController
+    public class SaleController : ControllerBase
     {
         private readonly IMediator _mediator;
         public SaleController(IMediator mediator)
@@ -16,7 +17,8 @@ namespace FarmacorpPos.API.Controllers
         [HttpPost("sales")]
         public  async Task<IActionResult> RegisterSale([FromBody] RegisterSaleCommand command )
         {
-            return await _mediator.Send(command);
+            
+                return await _mediator.Send(command);
 
         }
     }

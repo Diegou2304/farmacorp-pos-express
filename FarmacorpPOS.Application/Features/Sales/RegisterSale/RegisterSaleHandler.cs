@@ -14,8 +14,10 @@ namespace FarmacorpPOS.Application.Features.Sales.RegisterSale
         private readonly IProductRepository _productRepository;
         private readonly ISaleStrategyFactory _saleStrategyFactory;
         private readonly string _saleStrategyName;
-        public RegisterSaleHandler(IProductRepository productRepository, ISaleStrategyFactory saleStrategyFactory, IOptions<SaleStrategyConfig> saleStrategyConfig)
-        {
+        public RegisterSaleHandler(IProductRepository productRepository, 
+                                    ISaleStrategyFactory saleStrategyFactory, 
+                                    IOptions<SaleStrategyConfig> saleStrategyConfig)
+                                {
             _productRepository = productRepository;
             _saleStrategyFactory = saleStrategyFactory;
             _saleStrategyName = saleStrategyConfig.Value.SaleMode;

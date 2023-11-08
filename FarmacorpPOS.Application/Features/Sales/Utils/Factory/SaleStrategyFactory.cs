@@ -11,7 +11,7 @@ namespace FarmacorpPOS.Application.Features.Sales.Utils.Factory
             _saleStrategies = saleStrategies;
         }
 
-        public ISaleStrategy GetInstance(string token)
+        public ISaleStrategy? GetInstance(string token)
         {
             return token switch
             {

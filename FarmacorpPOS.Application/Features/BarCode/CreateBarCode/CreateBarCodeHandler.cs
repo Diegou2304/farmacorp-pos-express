@@ -8,12 +8,10 @@ namespace FarmacorpPOS.Application.Features.BarCode.CreateBarCode
     public class CreateBarCodeHandler : IRequestHandler<CreateBarCodeCommand, IActionResult>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IBarCodeRepository _barCodeRepository;
 
-        public CreateBarCodeHandler(IProductRepository productRepository, IBarCodeRepository barCodeRepository)
+        public CreateBarCodeHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _barCodeRepository = barCodeRepository;
         }
         public async Task<IActionResult> Handle(CreateBarCodeCommand request, CancellationToken cancellationToken)
         {
