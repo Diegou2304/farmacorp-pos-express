@@ -35,7 +35,7 @@ Después de crear la carpeta de migraciones, ejecute el siguiente comando `update
 
 El archivo de la solución se encuentra dentro de la carpeta FarmacorpPos.Api y debe seleccionarse como proyecto de inicio.
 
-Para hacerlo, haga clic derecho en el proyecto CleanApiRest.Api y seleccione la opción **Configurar como proyecto de inicio predeterminado**
+Para hacerlo, haga clic derecho en el proyecto FarmacorpPos.Api y seleccione la opción **Configurar como proyecto de inicio predeterminado**
 
 # EXPLICACIÓN DE LOS REQUERIMIENTOS
 
