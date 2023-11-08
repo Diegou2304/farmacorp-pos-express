@@ -27,7 +27,7 @@ namespace FarmacorpPOS.Application.Features.Products.AssignCategories
             if (ProductBelongsToCategory(product, category.CategoryId)) return new BadRequestObjectResult(new { Message = "El producto ya pertenece a la categoria escogida" });
             if (product is not null && category is not null)
             {
-
+                
                 product.Categories.Add(category);
                 await _productRepository.UpdateProductAsync(product);
 

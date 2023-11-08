@@ -28,6 +28,16 @@ namespace FarmacorpPOS.Domain.ERP
                 UniqueCode = Guid.NewGuid(),
             };
         }
+
+        public void DecreaseStock(int QuantitySold)
+        {
+            Stock -= QuantitySold;
+        }
+
+        public void IncreaseStock(int Quantity)
+        {
+            Stock += Quantity;
+        }
     }
 
     

@@ -18,6 +18,7 @@ namespace FarmacorpPOS.Infrastructure.Repositories
             return await _dbcontext.products.AsSplitQuery()
                             .Include(s => s.ProductCategories)
                             .Include(p => p.BarCode)
+                            .Include(p => p.ErpProduct)
                             .FirstOrDefaultAsync(d => d.ProductId == id);
         }
 

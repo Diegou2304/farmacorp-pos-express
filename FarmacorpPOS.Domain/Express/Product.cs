@@ -1,7 +1,7 @@
 ﻿
 using FarmacorpPOS.Domain.ERP;
 using FarmacorpPOS.Domain.Express.JoinEntities;
-using System.Runtime.InteropServices;
+
 
 namespace FarmacorpPOS.Domain.Express
 {

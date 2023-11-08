@@ -117,9 +117,10 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                     ClientFullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UniqueProductCode = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    Discount = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TotalPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Discount = table.Column<double>(type: "float", nullable: false),
+                    TotalPrice = table.Column<double>(type: "float", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -183,14 +184,14 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                 columns: new[] { "ProductId", "ExpirationDate", "Observations", "Price", "ProductName", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2300), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
-                    { 2, new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2309), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
+                    { 1, new DateTime(2023, 11, 8, 1, 14, 29, 418, DateTimeKind.Local).AddTicks(6377), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
+                    { 2, new DateTime(2023, 11, 8, 1, 14, 29, 418, DateTimeKind.Local).AddTicks(6391), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
                 });
 
             migrationBuilder.InsertData(
                 table: "ErpProducts",
                 columns: new[] { "ErpProductId", "Cost", "RegistrationDate", "Stock", "UniqueCode" },
-                values: new object[] { 1, 5.9900000000000002, new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2319), 100, new Guid("02188133-4972-4406-b03c-a5b7fed4b938") });
+                values: new object[] { 1, 5.9900000000000002, new DateTime(2023, 11, 8, 1, 14, 29, 418, DateTimeKind.Local).AddTicks(6410), 100, new Guid("37718f25-f9f8-453c-91c6-d432920c5809") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentCategoryId",

@@ -64,9 +64,9 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         {
                             ErpProductId = 1,
                             Cost = 5.9900000000000002,
-                            RegistrationDate = new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2319),
+                            RegistrationDate = new DateTime(2023, 11, 8, 1, 14, 29, 418, DateTimeKind.Local).AddTicks(6410),
                             Stock = 100,
-                            UniqueCode = new Guid("02188133-4972-4406-b03c-a5b7fed4b938")
+                            UniqueCode = new Guid("37718f25-f9f8-453c-91c6-d432920c5809")
                         });
                 });
 
@@ -121,9 +121,8 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Discount")
+                        .HasColumnType("float");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -135,12 +134,14 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TotalPrice")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
 
                     b.Property<Guid>("UniqueProductCode")
                         .HasColumnType("uniqueidentifier");
@@ -213,7 +214,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         new
                         {
                             ProductId = 1,
-                            ExpirationDate = new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2300),
+                            ExpirationDate = new DateTime(2023, 11, 8, 1, 14, 29, 418, DateTimeKind.Local).AddTicks(6377),
                             Observations = "Secadores absorbe todo",
                             Price = 10.99,
                             ProductName = "Secadores de Mano",
@@ -222,7 +223,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         new
                         {
                             ProductId = 2,
-                            ExpirationDate = new DateTime(2023, 11, 7, 23, 31, 45, 817, DateTimeKind.Local).AddTicks(2309),
+                            ExpirationDate = new DateTime(2023, 11, 8, 1, 14, 29, 418, DateTimeKind.Local).AddTicks(6391),
                             Observations = "Alimento frutal bebible",
                             Price = 1.5,
                             ProductName = "Pilfrut",
