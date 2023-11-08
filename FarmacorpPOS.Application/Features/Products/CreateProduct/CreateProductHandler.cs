@@ -37,7 +37,7 @@ namespace FarmacorpPOS.Application.Features.Products.CreateProduct
 
             await _productRepository.AddProductAsync(newProduct);
 
-            return new CreatedAtRouteResult(newProduct.ProductId, new {});
+            return new OkObjectResult(new { newProduct.ProductId });
             
         }
     }

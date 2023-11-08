@@ -23,7 +23,7 @@ namespace FarmacorpPOS.Application.Features.Sales.Utils.Strategy
             var newSale = ExpressSale.CreateSale(clientName, product, quantity, discount);
             product.ErpProduct.DecreaseStock(quantity);
             await _saleRepository.RegisterSale(newSale);
-            return new OkResult();
+            return new OkObjectResult(new {newSale.ExpressSaleId});
         }
 
         private static double GetDiscount(Product product) => product.ProductCategories.Count switch

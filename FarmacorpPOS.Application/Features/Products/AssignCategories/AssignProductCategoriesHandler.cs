@@ -31,7 +31,7 @@ namespace FarmacorpPOS.Application.Features.Products.AssignCategories
                 product.Categories.Add(category);
                 await _productRepository.UpdateProductAsync(product);
 
-                return new OkResult();
+                return new NoContentResult();
             }
 
             return new BadRequestObjectResult(new { Message = "Por favor, verifique que el producto o la categoria existan" });
