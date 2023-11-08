@@ -1,5 +1,6 @@
 ﻿using FarmacorpPOS.Domain.ERP;
 using FarmacorpPOS.Domain.Express;
+using FarmacorpPOS.Domain.Express.JoinEntities;
 using FarmacorpPOS.Infrastructure.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,16 @@ namespace FarmacorpPOS.Infrastructure.Persistence
             
         }
 
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            foreach(var entry in ChangeTracker.Entries<ProductCategory>())
+            {
+                entry.Entity.CreationDate = DateTime.Now;
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
