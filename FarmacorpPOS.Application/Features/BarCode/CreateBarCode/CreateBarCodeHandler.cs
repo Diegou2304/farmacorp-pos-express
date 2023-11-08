@@ -1,23 +1,21 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using FarmacorpPOS.Domain.ERP;
-using FarmacorpPOS.Infrastructure.Repositories.Contracts;
+using FarmacorpPOS.Infrastructure.Repositories;
 
 namespace FarmacorpPOS.Application.Features.BarCode.CreateBarCode
 {
     public class CreateBarCodeHandler : IRequestHandler<CreateBarCodeCommand, IActionResult>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateBarCodeHandler(IProductRepository productRepository)
+        public CreateBarCodeHandler(IUnitOfWork unitOfWork)
         {
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IActionResult> Handle(CreateBarCodeCommand request, CancellationToken cancellationToken)
         {
           
-
-            var product = await _productRepository.GetProductById(request.ProductId);
+            var product = await _unitOfWork.ProductRepository.GetProductById(request.ProductId);
           
             if (product is null || product.BarCode is not null) return new BadRequestObjectResult(
                         new {Message = "El producto ya tiene asignado un producto de barras ó el código no existe"}
@@ -25,9 +23,14 @@ namespace FarmacorpPOS.Application.Features.BarCode.CreateBarCode
 
             var newBarCode = Domain.ERP.BarCode.Create(request.Active, product);
 
-            product.BarCode = newBarCode;
+            product.AssignBarCode(newBarCode);
+            await _unitOfWork.ProductRepository.UpdateProductAsync(product);
 
-            await _productRepository.UpdateProductAsync(product);
+            var result = await _unitOfWork.Complete();
+            if (result < 0)
+            {
+                return new BadRequestResult();
+            }
 
             return new OkObjectResult(new { newBarCode.BarCodeId});
         }

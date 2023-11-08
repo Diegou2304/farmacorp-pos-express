@@ -45,5 +45,10 @@ namespace FarmacorpPOS.Domain.Express
             };
 
         }
+
+        public void AssignBarCode (BarCode barcode)
+        {
+            BarCode = barcode;
+        }
     }
 }

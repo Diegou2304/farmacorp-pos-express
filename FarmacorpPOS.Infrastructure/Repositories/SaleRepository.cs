@@ -15,7 +15,7 @@ namespace FarmacorpPOS.Infrastructure.Repositories
         public async Task RegisterSale(ExpressSale expressSale)
         {
             await _dbContext.ExpressSale.AddAsync(expressSale);
-            await _dbContext.SaveChangesAsync();
+          
         }
 
       

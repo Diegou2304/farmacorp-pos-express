@@ -21,6 +21,7 @@ namespace FarmacorpPOS.Infrastructure
             services.AddScoped<IBarCodeRepository, BarCodeRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

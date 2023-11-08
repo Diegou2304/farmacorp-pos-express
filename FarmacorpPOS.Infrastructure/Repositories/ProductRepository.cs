@@ -28,7 +28,7 @@ namespace FarmacorpPOS.Infrastructure.Repositories
         {
               _dbcontext.Update(product);
 
-            await _dbcontext.SaveChangesAsync();
+           
         }
 
         public async Task<ProductType?> GetProductTypeById(int id)
@@ -38,7 +38,7 @@ namespace FarmacorpPOS.Infrastructure.Repositories
         public async Task AddProductAsync(Product product)
         {
             await _dbcontext.products.AddAsync(product);
-            await _dbcontext.SaveChangesAsync();
+         
         }
 
     }
