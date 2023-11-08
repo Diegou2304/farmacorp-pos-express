@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace FarmacorpPos.API.Controllers
 {
     [ApiController]
-    public class BarCode : ControllerBase
+    public class BarCodeController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public BarCode(IMediator mediator)
+        public BarCodeController(IMediator mediator)
         {
             _mediator = mediator;
         }

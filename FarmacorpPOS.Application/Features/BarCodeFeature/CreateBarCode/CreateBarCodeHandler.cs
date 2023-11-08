@@ -22,7 +22,9 @@ namespace FarmacorpPOS.Application.Features.BarCode.CreateBarCode
 
             var product = await _productRepository.GetProductById(request.ProductId);
           
-            if (product is null || product.BarCode is not null) return new BadRequestObjectResult(new {Message = "El producto ya tiene asignado un producto de barras ó el código no existe"});
+            if (product is null || product.BarCode is not null) return new BadRequestObjectResult(
+                        new {Message = "El producto ya tiene asignado un producto de barras ó el código no existe"}
+                );
 
             var newBarCode = Domain.ERP.BarCode.Create(request.Active, product);
 

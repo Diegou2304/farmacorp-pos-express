@@ -183,14 +183,14 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                 columns: new[] { "ProductId", "ExpirationDate", "Observations", "Price", "ProductName", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9357), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
-                    { 2, new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9369), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
+                    { 1, new DateTime(2023, 11, 7, 21, 1, 59, 403, DateTimeKind.Local).AddTicks(3244), "Secadores absorbe todo", 10.99, "Secadores de Mano", 1 },
+                    { 2, new DateTime(2023, 11, 7, 21, 1, 59, 403, DateTimeKind.Local).AddTicks(3254), "Alimento frutal bebible", 1.5, "Pilfrut", 2 }
                 });
 
             migrationBuilder.InsertData(
                 table: "ErpProducts",
                 columns: new[] { "ErpProductId", "Cost", "RegistrationDate", "Stock" },
-                values: new object[] { 1, 5.99m, new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9384), 100 });
+                values: new object[] { 1, 5.99m, new DateTime(2023, 11, 7, 21, 1, 59, 403, DateTimeKind.Local).AddTicks(3267), 100 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentCategoryId",

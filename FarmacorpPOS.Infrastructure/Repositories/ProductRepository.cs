@@ -15,7 +15,10 @@ namespace FarmacorpPOS.Infrastructure.Repositories
         }
         public async Task<Product?> GetProductById(int id)
         {
-            return await _dbcontext.products.Include(p => p.BarCode).FirstOrDefaultAsync(d => d.ProductId == id);
+            return await _dbcontext.products.AsSplitQuery()
+                            .Include(s => s.ProductCategories)
+                            .Include(p => p.BarCode)
+                            .FirstOrDefaultAsync(d => d.ProductId == id);
         }
 
         public async Task UpdateProductAsync(Product product)

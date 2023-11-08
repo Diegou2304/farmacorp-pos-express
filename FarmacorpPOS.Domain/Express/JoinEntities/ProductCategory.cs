@@ -7,7 +7,7 @@ namespace FarmacorpPOS.Domain.Express.JoinEntities
     public class ProductCategory
     {
         public int ProductId { get; set; }
-        public int CategoryId { get; set; }
+        public int IdCategory { get; set; }
         public int ProductCategoryId { get; set; }
         public DateTime CreationDate { get; set; }
 

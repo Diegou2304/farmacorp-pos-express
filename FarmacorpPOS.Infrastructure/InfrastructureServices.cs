@@ -17,6 +17,7 @@ namespace FarmacorpPOS.Infrastructure
                 ));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IBarCodeRepository, BarCodeRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             return services;
         }
     }

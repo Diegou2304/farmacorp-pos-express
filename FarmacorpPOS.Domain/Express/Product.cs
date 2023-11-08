@@ -15,7 +15,7 @@ namespace FarmacorpPOS.Domain.Express
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
         public ICollection<ExpressSale> ExpressSales { get; } = new List<ExpressSale>();
-        public ICollection <Category> Categories { get; } = new List<Category>();
+        public ICollection <Category> Categories { get; set; } = new List<Category>();
         public ICollection<ProductCategory> ProductCategories { get; } = new List<ProductCategory>();
         public BarCode? BarCode { get; set; }
         public ErpProduct? ErpProduct { get; set; }

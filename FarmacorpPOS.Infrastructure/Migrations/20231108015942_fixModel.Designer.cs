@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmacorpPOS.Infrastructure.Migrations
 {
     [DbContext(typeof(FarmacorpPosDbContext))]
-    [Migration("20231108004752_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231108015942_fixModel")]
+    partial class fixModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,7 +64,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         {
                             ErpProductId = 1,
                             Cost = 5.99m,
-                            RegistrationDate = new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9384),
+                            RegistrationDate = new DateTime(2023, 11, 7, 21, 59, 42, 574, DateTimeKind.Local).AddTicks(4323),
                             Stock = 100
                         });
                 });
@@ -159,9 +159,6 @@ namespace FarmacorpPOS.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductCategoryId"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
@@ -215,7 +212,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         new
                         {
                             ProductId = 1,
-                            ExpirationDate = new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9357),
+                            ExpirationDate = new DateTime(2023, 11, 7, 21, 59, 42, 574, DateTimeKind.Local).AddTicks(4300),
                             Observations = "Secadores absorbe todo",
                             Price = 10.99,
                             ProductName = "Secadores de Mano",
@@ -224,7 +221,7 @@ namespace FarmacorpPOS.Infrastructure.Migrations
                         new
                         {
                             ProductId = 2,
-                            ExpirationDate = new DateTime(2023, 11, 7, 20, 47, 52, 150, DateTimeKind.Local).AddTicks(9369),
+                            ExpirationDate = new DateTime(2023, 11, 7, 21, 59, 42, 574, DateTimeKind.Local).AddTicks(4311),
                             Observations = "Alimento frutal bebible",
                             Price = 1.5,
                             ProductName = "Pilfrut",
