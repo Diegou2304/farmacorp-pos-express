@@ -94,6 +94,7 @@ Todos los requerimientos fueron desarrollados en su totalidad. Se tiene 4 Endpoi
 	```
 	"SaleStrategyConfig": {
 		"SaleMode":  "NewSale"
+		//"SaleMode": "BaseSale"
 	}
 	```
 	Para cambiar el tipo de estrategia solamente basta con cambiar el valor de BaseSale para los casos normales a NewSale para la estrategia GANAMAX
