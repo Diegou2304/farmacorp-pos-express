@@ -14,7 +14,7 @@ namespace FarmacorpPos.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("/barcode")]
+        [HttpPost("/barcodes")]
         public async Task<IActionResult> CreateBarCode([FromBody] CreateBarCodeCommand command)
         {
 

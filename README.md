@@ -99,3 +99,5 @@ Todos los requerimientos fueron desarrollados en su totalidad. Se tiene 4 Endpoi
 	```
 	Para cambiar el tipo de estrategia solamente basta con cambiar el valor de BaseSale para los casos normales a NewSale para la estrategia GANAMAX
 	Solamente con ese cambio la aplicación se comportará como debe según el tipo de estrategia
+# Registro de logs
+Para registrar los logs se utilizó Serilog, los logs iran saliendo en la consola. Además que se escribiran en el archivo indicado en los appsettings
